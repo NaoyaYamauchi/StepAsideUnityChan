@@ -25,24 +25,10 @@ public class MyCamereController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.carPrefabClone = GameObject.Find("CarPrefab(Clone)");
-        this.coinPrefabClone = GameObject.Find("CoinPrefab(Clone)");
-        this.conePrefabClone = GameObject.Find("TrafficConePrefab(Clone)");
+        
         //Unityちゃんの位置に合わせてカメラの位置を移動
         this.transform.position = new Vector3(0, this.transform.position.y, this.unitychan.transform.position.z-difference);
-        Debug.Log(carPrefabClone.transform.position.z);
-        if (this.transform.position.z > carPrefabClone.transform.position.z)
-        {
-            Destroy(this.carPrefabClone);
-        }
-        if (this.transform.position.z > coinPrefabClone.transform.position.z)
-        {
-            Destroy(this.coinPrefabClone);
-        }
-        if (this.transform.position.z > conePrefabClone.transform.position.z)
-        {
-            Destroy(this.conePrefabClone);
-        }
+        
 
     }
 }

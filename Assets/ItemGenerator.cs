@@ -19,7 +19,7 @@ public class ItemGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //一定距離ごとにアイテムを生成
-		for(int i = startPos; i < goalPos; i += 15)//i++じゃないの初めて見た
+        for (int i = startPos; i < goalPos; i += 15)//i++じゃないの初めて見た
         {
             //どのアイテムを出すのかランダムに設定
             int num = Random.Range(0, 10);
@@ -63,6 +63,6 @@ public class ItemGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        
+    }
 }
