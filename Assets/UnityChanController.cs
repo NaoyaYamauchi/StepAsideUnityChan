@@ -125,7 +125,6 @@ public class UnityChanController : MonoBehaviour
         }
     }
     //ジャンプボタンを押した場合の処理
-    //なんで"My"ってつけるんだろう
     public void GetMyJumpButtonDown()
     {
         if(this.transform.position.y < 0.5f)
