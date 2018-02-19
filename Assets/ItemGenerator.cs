@@ -18,25 +18,19 @@ public class ItemGenerator : MonoBehaviour {
     //アイテムを出すx方向の範囲
     private float posRange = 3.4f;
     //アイテム出現位置記録
-    private int itempoint = 0;
-    //i
-    private int count = 0;
-    //unitychanの絶対値
-    private int unitychandefault = 0;
+    private float itempoint = 0;
 	// Use this for initialization
 	void Start () {
         //Unityちゃんのオブジェクト取得
         this.unitychan = GameObject.Find("unitychan");
-        count = startPos;
-        unitychandefault = System.Math.Abs((int)unitychan.transform.position.z);
+        itempoint = unitychan.transform.position.z+15;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        itempoint = (int)unitychan.transform.position.z+unitychandefault;
-        //Debug.Log(itempoint);
-        if(itempoint%15 == 0 &&itempoint < goalPos-15)
+        //50mでとっているので、ゴール地点-50にしています。
+        if(unitychan.transform.position.z>=itempoint && unitychan.transform.position.z<130-50)
         {
             
             int num = Random.Range(0, 10);
@@ -46,7 +40,7 @@ public class ItemGenerator : MonoBehaviour {
                 for (float j = -1; j <= 1; j += 0.4f)
                 {
                     GameObject cone = Instantiate(conePrefab) as GameObject;
-                    cone.transform.position = new Vector3(4 * j, cone.transform.position.y, count);
+                    cone.transform.position = new Vector3(4 * j, cone.transform.position.y, itempoint+50);
                 }
             }
             else
@@ -63,21 +57,21 @@ public class ItemGenerator : MonoBehaviour {
                     {
                         //コインを生成
                         GameObject coin = Instantiate(coinPrefab) as GameObject;
-                        coin.transform.position = new Vector3(posRange * j, coin.transform.position.y, count + offsetZ);
+                        coin.transform.position = new Vector3(posRange * j, coin.transform.position.y, itempoint+50 + offsetZ);
                     }
                     else if (7 <= item && item <= 9)
                     {
                         //車を生成
                         GameObject car = Instantiate(carPrefab) as GameObject;
-                        car.transform.position = new Vector3(posRange * j, car.transform.position.y, count + offsetZ);
+                        car.transform.position = new Vector3(posRange * j, car.transform.position.y, itempoint+50 + offsetZ);
                     }
 
                 }
             }
-            count += 15;
+            itempoint += 15;
+            Debug.Log(itempoint);
 
         }
-        Debug.Log(count);
 
     }
 }
